@@ -5,3 +5,19 @@
   justify-content: center;
   align-items: center;
 }
+
+.start-button {
+  display: inline-block;
+  background-color: #4EB4F2;
+  color: #FFF;
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #3EA6E1;
+}

@@ -40,8 +40,8 @@ const About = () => {
 const Marker = () => {
   return (
     <div>
-      <h1>ARマーカー作成</h1>
-      <p><Link to="/about">始める</Link></p>
+      <h1>ARマーカー作成</h1><br/>
+      <p><Link to="/about"><button class="start-button">スタート</button></Link></p>
     </div>
   )
 }

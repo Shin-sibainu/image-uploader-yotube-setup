@@ -17,7 +17,7 @@
 }
 
 .movieUplodeBox {
-  border: 2px dashed #2d6395;
+  border: 2px dashed #4EB4F2;
   padding: 35px 60px;
   position: relative;
 }
@@ -34,4 +34,23 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+}
+
+.next-button {
+  background-color: #4EB4F2; /* ボタンの背景色 */
+  border: none; /* ボタンの枠線をなくす */
+  color: white; /* ボタンの文字色 */
+  padding: 12px 32px; /* ボタンの内側の余白 */
+  text-align: center; /* ボタンの中央揃え */
+  text-decoration: none; /* ボタンの下線をなくす */
+  display: inline-block; /* ボタンを横に並べる */
+  font-size: 16px; /* ボタンの文字の大きさ */
+  margin: 20px; /* ボタンの余白 */
+  cursor: pointer; /* ボタンのカーソル形状 */
+  border-radius: 4px; /* ボタンの角を丸くする */
+  transition-duration: 0.4s; /* ボタンのホバーエフェクトの時間 */
+}
+
+.next-button:hover {
+  background-color: #4EB4F2; /* ボタンのホバーエフェクト時の背景色 */
 }

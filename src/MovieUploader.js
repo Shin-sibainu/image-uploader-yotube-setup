@@ -68,7 +68,7 @@ const MovieUploader = () => {
               <div>
                 <img id="qr-code" src="qr-code.png" alt="qr-code" className="qr-code"/><br/><br/>
                 <h2 id="result" className="result"><p>アップロード完了しました！</p></h2>
-                <p><Link to="/marker">次へ</Link></p>
+                <p><Link to="/marker"><button class="next-button">次へ</button></Link></p>
               </div>
             </>
           ) : (
