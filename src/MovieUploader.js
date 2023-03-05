@@ -15,11 +15,29 @@ const MovieUploader = () => {
     const file = e.target.files[0]
     const storageRef = ref(storage, file.lastModified + "/" + file.name);
     const uploadMovie = uploadBytesResumable(storageRef, file);
+    let percentage;
 
     uploadMovie.on(
       "state_change",
       (snapshot) => {
         setLoading(true);
+        // setInterval(() => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        var loading = document.getElementById("loading");
+        var percentage = document.getElementById("percentage");
+        loading.value=progress
+        console.log("<progress max= 100" + " value=" + progress + "></progress>")
+        percentage.innerHTML=progress.toFixed() + " %";
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+        }
+        // }, 100);
       },
       (err) => {
         console.log(err)
@@ -38,16 +56,18 @@ const MovieUploader = () => {
   return (
     <>
       {loading ? (
-        <h2>アップロード中・・・</h2>
+        <div>
+          <progress max="100" value="50" id="loading"></progress>
+          <h3 id="percentage">0 %</h3>
+          <h2 className="nowloading">アップロード中・・・</h2>
+        </div>
       ) : (
         <>
           {isUploaded ? (
             <>
-              <div className="qr-code">
-                <img id="qr-code" src="qr-code.png" alt="qr-code" class="qr-code"/><br/>
-              </div>
-              <div className="result">
-                <h2 id="result"><p>アップロード完了しました！</p></h2>
+              <div>
+                <img id="qr-code" src="qr-code.png" alt="qr-code" className="qr-code"/><br/><br/>
+                <h2 id="result" className="result"><p>アップロード完了しました！</p></h2>
                 <p><Link to="/marker">次へ</Link></p>
               </div>
             </>
