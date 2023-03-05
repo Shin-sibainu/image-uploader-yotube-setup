@@ -20,11 +20,24 @@ const App = () => {
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome</h1>
-      <p><Link to="/about">始める</Link></p>
-      <p><Link to="/marker">ARマーカー生成（Debug）</Link></p>
-    </div>
+    // <div>
+    //   <h1>Welcome</h1>
+    //   <p><Link to="/about">始める</Link></p>
+    // </div>
+    <html>
+      <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+      </head>
+      <body>
+        <div class="welcome-container">
+          <h1>ようこそ</h1>
+          <p>そつあるさくせい</p>
+          <p><Link to="/about"><button class="start-button">スタート</button></Link></p>
+          <p><Link to="/marker">ARマーカー生成（Debug）</Link></p>
+        </div>
+      </body>
+    </html>
   )
 }
 
