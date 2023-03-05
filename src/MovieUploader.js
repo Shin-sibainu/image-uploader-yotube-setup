@@ -77,13 +77,5 @@ const MovieUploader = () => {
   );
 };
 
-const Marker = () => {
-  return (
-    <div>
-      <h1>ARマーカー作成</h1>
-      <p><Link to="/about">始める</Link></p>
-    </div>
-  )
-}
 
 export default MovieUploader;
