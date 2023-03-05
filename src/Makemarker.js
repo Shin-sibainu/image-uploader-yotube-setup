@@ -10,13 +10,16 @@ import THREEx from "./threex-arpatternfile.js";
 // import { Canvas, useFrame } from '@react-three/fiber'
 
 const MovieUploader = () => {
+
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
 
+  // 送信された画像パス（予定：今は用意したパス）
   var innerImageURL = `${process.env.PUBLIC_URL}/testsrc/test.jpg`;
   var imageName = "test";
-  var fullMarkerImage = null;
+  // 作成したARマーカーのパス
   var fullMarkerURL = null;
+  var fullMarkerImage = null;
 
   const OnFileUplodeToFirebase = (e) => {
     console.log(e.target.files);
@@ -46,11 +49,28 @@ const MovieUploader = () => {
     );
   };
 
+  const UploadinnerImage=(e)=>{
+    console.log("画像Upload");
+    // var file = this.files[0];
+    var file = e.target.files[0];
+		imageName = file.name
+		// remove file extension
+		imageName = imageName.substring(0, imageName.lastIndexOf('.')) || imageName
+		var reader = new FileReader();
+		reader.onload = function(event){
+			innerImageURL = event.target.result
+			updateFullMarkerImage()
+		};
+		reader.readAsDataURL(file);
+
+    console.log(innerImageURL);
+  };
+
   // ARマーカー作成
   const updateFullMarkerImage = () => {
     console.log("updateFullMarkerImage：ARマーカの生成");
     // get patternRatio とりあえずテキトーに設定・自由に変更できるようにしてもいいね
-    var patternRatio = 0.5;
+    var patternRatio = 0.9;
     var imageSize = 512;
     var borderColor = "black";
     // var patternRatio = document.querySelector('#patternRatioSlider').value/100
@@ -179,8 +199,8 @@ const MovieUploader = () => {
                   multiple
                   name="movieURL"
                   type="file"
-                  accept=".mp4"
-                  onChange={OnFileUplodeToFirebase}
+                  accept="image/*,.png,.jpg,.jpeg,.gif"
+                  onChange={UploadinnerImage}
                 />
               </div>
               <p>または</p>
@@ -189,8 +209,8 @@ const MovieUploader = () => {
                 <input
                   className="movieUploadInput"
                   type="file"
-                  onChange={OnFileUplodeToFirebase}
-                  accept=".mp4"
+                  onChange={UploadinnerImage}
+                  accept="image/*,.png,.jpg,.jpeg,.gif"
                 />
               </Button>
 
