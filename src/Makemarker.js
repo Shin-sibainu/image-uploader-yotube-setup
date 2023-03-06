@@ -7,7 +7,7 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 // THREE.JS
 import THREEx from "./threex-arpatternfile.js";
-// import { Canvas, useFrame } from '@react-three/fiber'
+
 
 const MovieUploader = () => {
 
@@ -77,17 +77,6 @@ const MovieUploader = () => {
     // var imageSize = document.querySelector('#imageSize').value
     // var borderColor = document.querySelector('#borderColor').value
 
-    // function hexaColor(color) {
-    // 	return /^#[0-9A-F]{6}$/i.test(color);
-    // };
-
-    // var s = new Option().style;
-    // s.color = borderColor;
-    // 	if (borderColor === '' || (s.color != borderColor && !hexaColor(borderColor))) {
-    // 	// if color not valid, use black
-    // 	borderColor = 'black';
-    // }
-
     THREEx.ArPatternFile.buildFullMarker(
       innerImageURL,
       patternRatio,
@@ -113,12 +102,6 @@ const MovieUploader = () => {
   // ARマーカパターンファイル出力
   const OutPutPattarnFile = () => {
     console.log("ppatファイル作成開始");
-
-    // var innerImageURL = `${process.env.PUBLIC_URL}/testsrc/test.jpg`;
-    // var imageName = "test";
-    // var fullMarkerImage = null;
-    console.log("pattダウンロードボタン押下");
-
     updateFullMarkerImage(innerImageURL);
 
     if (innerImageURL === null) {
@@ -222,10 +205,6 @@ const MovieUploader = () => {
               </Button>
 
               <div id="imageContainer"></div>
-              <img
-                width="50px"
-                src={`${process.env.PUBLIC_URL}/testsrc/test.jpg`}
-              ></img>
             </div>
           )}
         </>
